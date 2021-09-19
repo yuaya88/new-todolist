@@ -10,9 +10,14 @@
 </head>
 
 <body>
-  <h1>@yield('title')</h1>
-  <div class="content">
-    @yield('content')
+  <div class="content_box">
+    <div class="text">
+      <h1>@yield('title')</h1>
+    </div>
+    <div class="content">
+      @yield('content')
+    </div>
+    
   </div>
 </body>
 

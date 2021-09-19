@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ToDo extends Model
 {
-    use HasFactory;
-
-
+    public static $rules = [
+        'content'=> 'required|max:20',
+    ];
 }
+
+
+
