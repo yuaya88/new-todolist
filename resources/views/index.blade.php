@@ -1,10 +1,10 @@
 @extends('layouts.default')
 @section('title','Todo List')
 @section('content')
-<form action="/" method="POST">
-  @csrf
-  <input type="text" name="content" class="todo_content">
-  <button type='submit' name='content'>追加</button>
+<form action="/todo/create" method="POST">
+  {{csrf_field ()}}
+  <input type="text" class="todo_content">
+  <button type='submit'>追加</button>
   @if(count($errors) > 0)
   　<ul>
     @foreach($errors->all() as $error)
@@ -28,7 +28,7 @@
     @endforeach
 
   </table>
-  
+
 
   <td>
 

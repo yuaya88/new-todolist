@@ -49,6 +49,7 @@ class Todocontroller extends Controller
 
         $this->validate($request, Todo::$rules);
         $todo = new todo;
+        unset($form['_token']);
         $todo->fill($request->all());
         $todo->save();
         return redirect ('/');
