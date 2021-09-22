@@ -7,11 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Todo extends Model
 {
-    protected $table = 'todos';
+    protected $guarded = array('id');
     public static $rules = [
-        'content'=> 'required|max:20',
+        'content' => 'required|max:20',
     ];
 }
-
-
-
