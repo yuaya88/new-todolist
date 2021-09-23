@@ -1,9 +1,10 @@
 @extends('layouts.default')
 @section('title','Todo List')
 @section('content')
-<form action="/todo/create" method="POST">
+<form action="/todo/create" method="POST" >
   {{csrf_field ()}}
-  <input type="text" class="todo_content" name="content">
+  <input type="text" class="todo_content" name="content" value="{{$todo->content}}">
+</form>
   <button type='submit'>追加</button>
   @if(count($errors) > 0)
   　<ul>
@@ -23,9 +24,9 @@
     @foreach($todos as $todo)
     <tr>
       <th>{{$todo->created_at}}</th>
-      <th>{{$todo->content}}</th>
+      <th><input type="text" class="new_content" value=" {{$todo->content}}"></th>
       <th>
-        <form action='/todo/update' method="POST">
+        <form action="{{ route('todo.update', ['id' => $item->id]) }}" method="POST">
           {{ csrf_field() }}
 
           <button type="submit" class="btn_edit">更新</button>
@@ -46,11 +47,5 @@
   </table>
 
 
-  <td>
 
-  </td>
-  </tr>
-
-</form>
-</table>
 @endsection
