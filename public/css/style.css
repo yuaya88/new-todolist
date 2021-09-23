@@ -1,0 +1,14 @@
+body {
+  width: 100%;
+  padding-top: 200px;
+  background-color: rgb(18, 18, 124);
+  
+}
+.content_box {
+
+  background-color:white;
+  width: 60%;
+  margin: auto;
+
+  
+}
