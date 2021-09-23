@@ -3,9 +3,9 @@
 @section('content')
 <form action="/todo/create" method="POST" >
   {{csrf_field ()}}
-  <input type="text" class="todo_content" name="content" value="{{$todo->content}}">
-</form>
+  <input type="text" class="todo_content" name="content">
   <button type='submit'>追加</button>
+</form>
   @if(count($errors) > 0)
   　<ul>
     @foreach($errors->all() as $error)
@@ -24,14 +24,12 @@
     @foreach($todos as $todo)
     <tr>
       <th>{{$todo->created_at}}</th>
-      <th><input type="text" class="new_content" value=" {{$todo->content}}"></th>
-      <th>
-        <form action="{{ route('todo.update', ['id' => $item->id]) }}" method="POST">
-          {{ csrf_field() }}
-
-          <button type="submit" class="btn_edit">更新</button>
-        </form>
-      </th>
+      <form action="{{ route('todo.update', ['id' => $todo->id]) }}" method="POST">
+        {{ csrf_field() }}
+        <th><input type="text" class="new_content" value="{{$todo->content}}"></th>
+        <th><button type="submit" class="btn_edit" name="update">更新</button></th>
+      </form>
+      
       <th>
         <form action='/todo/delete' method="POST">
           {{ csrf_field() }}
