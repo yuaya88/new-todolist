@@ -26,12 +26,12 @@
       <th>{{$todo->created_at}}</th>
       <form action="{{ route('todo.update', ['id' => $todo->id]) }}" method="POST">
         {{ csrf_field() }}
-        <th><input type="text" class="new_content" value="{{$todo->content}}"></th>
+        <th><input type="text" class="new_content" name="content" value="{{$todo->content}}"></th>
         <th><button type="submit" class="btn_edit" name="update">更新</button></th>
       </form>
       
       <th>
-        <form action='/todo/delete' method="POST">
+        <form action="{{ route('todo.delete', ['id' =>$todo->id]) }}" method="POST">
           {{ csrf_field() }}
 
           <button type="submit" class="btn_delete">削除</button>

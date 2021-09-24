@@ -32,7 +32,7 @@ class Todocontroller extends Controller
         $form = $request->all();
         unset($form['_token']);
         $todo->fill($form)->save();
-
+    
         return redirect('/');
     }
 
@@ -47,16 +47,18 @@ class Todocontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,)
+    public function update(Request $request)
+    
     {
-
-
+        
+        
         $this->validate($request, Todo::$rules);
-
         $form = $request->all();
         unset($form['_token']);
-        Todo::where('id', $request->id)->update($form)->save();
+        Todo::where('id', $request->id)->update($form);
+        
         return redirect('/');
+
     }
 
     /**
@@ -68,7 +70,7 @@ class Todocontroller extends Controller
     public function delete(Request $request)
     {
 
-        $todo = Todo::find('id', $request->id);
+        $todo = Todo::find('$id');
         $todo->delete();
         return redirect('/');
     }
